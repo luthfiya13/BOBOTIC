@@ -1,0 +1,6 @@
+{
+  "name": "BOBOTIC",
+  "description": "Platform EdTech profesional untuk pembelajaran robotik dan coding siswa privat di Solo Raya (BOBOTIC).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

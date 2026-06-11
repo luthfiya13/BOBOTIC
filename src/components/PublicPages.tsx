@@ -36,6 +36,7 @@ export default function PublicPages({
   // B2B Calculator States
   const [b2bLevelSetting, setB2bLevelSetting] = useState<"SD" | "SMP" | "SMA">("SD");
   const [b2bStudentCount, setB2bStudentCount] = useState<number>(15);
+  const maxB2bStudents = 30;
 
   // Class Selection & Register Modal State
   const [selectedClassCard, setSelectedClassCard] = useState<any | null>(null);
@@ -53,7 +54,8 @@ export default function PublicPages({
   // Calculate pricing based on formula
   const getB2bQuote = () => {
     const baseCount = 10;
-    const diff = Math.max(0, b2bStudentCount - baseCount);
+    const effectiveStudentCount = Math.min(maxB2bStudents, Math.max(baseCount, b2bStudentCount));
+    const diff = Math.max(0, effectiveStudentCount - baseCount);
     let basePrice = 75000;
     let incrementalPrice = 10000;
 
@@ -124,8 +126,8 @@ export default function PublicPages({
   // FAQ contents classified by Category
   const faqDatabase: { [key: string]: { q: string; a: string }[] } = {
     umum: [
-      { q: "Apa itu NEXUS Robotics?", a: "NEXUS Robotics adalah platform EdTech yang menyediakan jasa pengiriman mentor robotika dan coding bersertifikat datang langsung ke rumah siswa di Solo Raya. Kami menyediakan kurikulum komprehensif mulai dari block programming Scratch, robotika dasar dengan Arduino, Smart Devices (IoT & AI), hingga bimbingan kompetisi nasional." },
-      { q: "Di mana area layanan operasional NEXUS?", a: "Layanan kami mencakup seluruh wilayah Solo Raya, termasuk Kota Surakarta (Solo), Sukoharjo, Karanganyar, Boyolali, Klaten, dan Sragen. Mentor kami akan berkunjung ke kediaman Anda siap dengan segala kit pembelajaran." },
+      { q: "Apa itu BOBOTIC?", a: "BOBOTIC adalah platform EdTech yang menyediakan jasa pengiriman mentor robotika dan coding bersertifikat datang langsung ke rumah siswa di Solo Raya. Kami menyediakan kurikulum komprehensif mulai dari block programming Scratch, robotika dasar dengan Arduino, Smart Devices (IoT & AI), hingga bimbingan kompetisi nasional." },
+      { q: "Di mana area layanan operasional BOBOTIC?", a: "Layanan kami mencakup seluruh wilayah Solo Raya, termasuk Kota Surakarta (Solo), Sukoharjo, Karanganyar, Boyolali, Klaten, dan Sragen. Mentor kami akan berkunjung ke kediaman Anda siap dengan segala kit pembelajaran." },
       { q: "Berapa usia minimal untuk bergabung?", a: "Siswa kami paling muda berusia 6 tahun (kelas 1 SD) untuk memulai Level 1 Scratch Coding. Bagi siswa berumur lebih di atas 10 tahun dapat langsung menempuh Level 2 Arduino Hardware atau disesuaikan dengan minat." }
     ],
     pembayaran: [
@@ -140,7 +142,7 @@ export default function PublicPages({
       { q: "Apakah siswa mendapatkan sertifikat kelulusan?", a: "Setiap kali siswa berhasil menyelesaikan tantangan Tugas Akhir (Final Project) di tiap Level, sistem kami akan menerbitkan sertifikat digital resmi yang tervalidasi yang dapat diunduh langsung lewat dasbor siswa." }
     ],
     sekolah: [
-      { q: "Bagaimana sistem kerja sama B2B Ekstrakurikuler Sekolah?", a: "NEXUS menyediakan guru ahli bersertifikat dan seluruh kurikulum silabus robotik sekolah. Biaya dihitung per-sesi secara progresif berbasis total jumlah murid. Sekolah juga dibekali Dasbor Guru untuk meninjau absensi dan progres siswa." }
+      { q: "Bagaimana sistem kerja sama B2B Ekstrakurikuler Sekolah?", a: "BOBOTIC menyediakan guru ahli bersertifikat dan seluruh kurikulum silabus robotik sekolah. Biaya dihitung per-sesi secara progresif berbasis total jumlah murid. Sekolah juga dibekali Dasbor Guru untuk meninjau absensi dan progres siswa." }
     ]
   };
 
@@ -174,7 +176,7 @@ export default function PublicPages({
                     Lihat Paket & Harga
                   </button>
                   <a
-                    href="https://wa.me/6282212345678?text=Halo%2520NEXUS%2520Robotics,%2520saya%2520ingin%2520konsultasi%2520gratis"
+                    href="https://wa.me/6282212345678?text=Halo%2520BOBOTIC%2520Robotics,%2520saya%2520ingin%2520konsultasi%2520gratis"
                     target="_blank"
                     rel="noreferrer"
                     className="px-6 py-3.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-100 font-semibold rounded-xl text-center transition-all cursor-pointer text-sm flex items-center justify-center space-x-2"
@@ -188,17 +190,10 @@ export default function PublicPages({
                 <div className="absolute inset-0 bg-blue-100 filter blur-3xl rounded-full opacity-30 -z-10"></div>
                 <div className="relative border border-slate-100 p-4 bg-white/80 rounded-3xl shadow-xl max-w-md">
                   <img
-                    src="https://images.unsplash.com/photo-1597839219216-a773cb2473e4?auto=format&fit=crop&q=80&w=500"
-                    alt="Anak belajar merakit robot di rumah bersama mentor"
-                    className="rounded-2xl shadow-inner w-full object-cover aspect-[4/3] referrerPolicy='no-referrer'"
+                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=900"
+                    alt="Robot modern yang menarik"
+                    className="rounded-2xl shadow-inner w-full object-cover aspect-[4/3]"
                   />
-                  <div className="absolute -bottom-4 -left-4 bg-slate-900 text-white p-4 rounded-2xl shadow-xl flex items-center space-x-3 max-w-[210px] animate-float">
-                    <CheckCircle2 className="h-8 w-8 text-green-400 shrink-0" />
-                    <div>
-                      <p className="text-xs font-bold text-white">Full Kits Diantar</p>
-                      <p className="text-[10px] text-slate-400">Laptop & toolkit disiapkan gratis</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -214,7 +209,7 @@ export default function PublicPages({
                 </div>
                 <div className="space-y-1">
                   <p className="font-display text-4xl sm:text-5xl font-bold text-amber-400">40+</p>
-                  <p className="text-xs sm:text-sm text-slate-400 font-medium">Mentor Bersertifikat (UNS/UMS)</p>
+                  <p className="text-xs sm:text-sm text-slate-400 font-medium">Mentor Bersertifikat</p>
                 </div>
                 <div className="space-y-1">
                   <p className="font-display text-4xl sm:text-5xl font-bold text-amber-400">12+</p>
@@ -307,7 +302,7 @@ export default function PublicPages({
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
               <div className="text-center space-y-2">
                 <h2 className="font-display font-semibold text-xs text-blue-600 tracking-wider uppercase">Bukti Nyata</h2>
-                <p className="font-display font-bold text-3xl text-slate-900">Kata Orang Tua Siswa NEXUS</p>
+                <p className="font-display font-bold text-3xl text-slate-900">Kata Orang Tua Siswa BOBOTIC</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -425,7 +420,7 @@ export default function PublicPages({
             <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">Profil Tim</span>
             <h1 className="font-display font-bold text-3xl sm:text-5xl text-slate-900">Mencetak Generasi Teknolog Muda Solo Raya</h1>
             <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
-              NEXUS didirikan pada pertengahan 2024 dengan sebuah tekad sederhana: mendemokratisasi akses robotik canggih dan coding interaktif tanpa membebani orangtua dengan biaya hardware yang melambung tinggi.
+              BOBOTIC didirikan pada pertengahan 2024 dengan sebuah tekad sederhana: mendemokratisasi akses robotik canggih dan coding interaktif tanpa membebani orangtua dengan biaya hardware yang melambung tinggi.
             </p>
             <div className="relative mt-8 rounded-3xl overflow-hidden shadow-lg border border-slate-100">
               <img
@@ -465,7 +460,7 @@ export default function PublicPages({
 
           {/* Kisah Pendiri */}
           <section className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xs space-y-4">
-            <h3 className="font-display font-bold text-xl text-slate-900 border-b border-slate-50 pb-2">Kisah di Balik NEXUS</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 border-b border-slate-50 pb-2">Kisah di Balik BOBOTIC</h3>
             <p className="text-sm text-slate-600 leading-relaxed">
               Dipelopori oleh sekelompok alumni Mekatronika UNS pada Q3 2024, mereka menyaksikan tantangan pendidikan di mana banyak anak yang berminat tinggi pada dunia robotik namun terkendala fasilitas sekolah yang minim ataupun keterbatasan waktu orang tua mengantarkan buah hatinya ke tempat les reguler.
             </p>
@@ -476,7 +471,7 @@ export default function PublicPages({
 
           {/* Tim Inti Grid */}
           <section className="space-y-6">
-            <h3 className="font-display font-bold text-xl text-slate-900 text-center">Tim Inti NEXUS</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 text-center">Tim Inti BOBOTIC</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-white border border-slate-100 p-6 rounded-2xl text-center space-y-3">
                 <div className="h-16 w-16 bg-blue-600 text-white font-bold font-display rounded-full flex items-center justify-center mx-auto text-lg glow-primary">MR</div>
@@ -500,7 +495,7 @@ export default function PublicPages({
                   <h4 className="font-display font-bold text-sm text-slate-800">Yusuf Kurniadi</h4>
                   <p className="text-[10px] text-blue-600 font-semibold uppercase">Lead Software Engineer</p>
                 </div>
-                <p className="text-xs text-slate-500">Mantan Full-stack Engineer di SaaS Fintech startup, Penanggung jawab Dashboard Nexus.</p>
+                <p className="text-xs text-slate-500">Mantan Full-stack Engineer di SaaS Fintech startup, Penanggung jawab Dashboard BOBOTIC.</p>
               </div>
             </div>
           </section>
@@ -538,7 +533,7 @@ export default function PublicPages({
 
           {/* Nilai Perusahaan */}
           <section className="bg-slate-50 p-8 rounded-2xl border border-slate-200/60">
-            <h3 className="font-display font-bold text-xl text-slate-900 mb-6 text-center">Nilai-Nilai Utama NEXUS</h3>
+            <h3 className="font-display font-bold text-xl text-slate-900 mb-6 text-center">Nilai-Nilai Utama BOBOTIC</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="bg-white p-4 rounded-xl shadow-xs space-y-2">
                 <div className="font-display font-bold text-blue-600 text-lg">A</div>
@@ -768,15 +763,15 @@ export default function PublicPages({
                     <input
                       type="range"
                       min="10"
-                      max="100"
+                      max={maxB2bStudents}
                       step="1"
-                      value={b2bStudentCount}
-                      onChange={(e) => setB2bStudentCount(Number(e.target.value))}
+                      value={Math.min(maxB2bStudents, b2bStudentCount)}
+                      onChange={(e) => setB2bStudentCount(Math.min(maxB2bStudents, Number(e.target.value)))}
                       className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
                     />
                     <div className="flex justify-between text-[10px] text-slate-400 font-semibold font-mono">
                       <span>10 SISWA (MINIMAL)</span>
-                      <span>100 SISWA</span>
+                      <span>{maxB2bStudents} SISWA (MAKSIMAL)</span>
                     </div>
                   </div>
 
@@ -787,16 +782,16 @@ export default function PublicPages({
                       Rp {getB2bQuote().toLocaleString("id-ID")}
                     </p>
                     <p className="text-[11px] text-slate-300 leading-relaxed">
-                      Sesuai formula progresif: base 10 siswa pertama, +{b2bLevelSetting === "SD" ? "Rp 10.000" : b2bLevelSetting === "SMP" ? "Rp 15.000" : "Rp 20.000"} per-siswa tambahan.
+                      Sesuai formula progresif: base 10 siswa pertama, +{b2bLevelSetting === "SD" ? "Rp 10.000" : b2bLevelSetting === "SMP" ? "Rp 15.000" : "Rp 20.000"} per-siswa tambahan, dibatasi maksimal {maxB2bStudents} siswa.
                     </p>
                     <div className="bg-slate-800 p-2.5 rounded-lg text-[10px] text-left space-y-1 font-mono text-slate-300 border border-slate-750">
                       <p>• Tarif Dasar 10 Anak: Rp {b2bLevelSetting === "SD" ? "75.000" : b2bLevelSetting === "SMP" ? "100.000" : "120.000"}</p>
-                      <p>• Tambahan {Math.max(0, b2bStudentCount - 10)} Anak: Rp {(Math.max(0, b2bStudentCount - 10) * (b2bLevelSetting === "SD" ? 10000 : b2bLevelSetting === "SMP" ? 15000 : 20000)).toLocaleString("id-ID")}</p>
+                      <p>• Tambahan {Math.max(0, Math.min(maxB2bStudents, b2bStudentCount) - 10)} Anak: Rp {(Math.max(0, Math.min(maxB2bStudents, b2bStudentCount) - 10) * (b2bLevelSetting === "SD" ? 10000 : b2bLevelSetting === "SMP" ? 15000 : 20000)).toLocaleString("id-ID")}</p>
                     </div>
                   </div>
 
                   <a
-                    href="https://wa.me/6282212345678?text=Halo%20NEXUS%20Robotics,%20saya%20ingin%20mengajukan%20penawaran%20B2B%20untuk%20sekolah"
+                    href="https://wa.me/6282212345678?text=Halo%20BOBOTIC%20Robotics,%20saya%20ingin%20mengajukan%20penawaran%20B2B%20untuk%20sekolah"
                     target="_blank"
                     rel="noreferrer"
                     className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-center text-xs transition-all block cursor-pointer"
@@ -835,7 +830,6 @@ export default function PublicPages({
                       <span className="font-display font-semibold text-sm text-white">Bootcamp KRI/WRO</span>
                     </div>
                     <p className="text-[11px] text-slate-400">Coaching intensif 4-8 minggu oleh alumni juara mekatronika nasional.</p>
-                    <p className="text-xs font-mono font-bold text-amber-400">Estimasi: Rp 800rb - 1.2jt / Siswa</p>
                   </div>
                 </div>
 
@@ -928,7 +922,7 @@ export default function PublicPages({
                 {/* Header Modal */}
                 <div className="flex justify-between items-start border-b border-slate-50 pb-4 mb-6">
                   <div>
-                    <h3 className="font-display font-bold text-xl text-slate-900">Form Pendaftaran NEXUS</h3>
+                    <h3 className="font-display font-bold text-xl text-slate-900">Form Pendaftaran BOBOTIC</h3>
                     <p className="text-xs text-slate-400 line-clamp-1">{selectedClassCard.name}</p>
                   </div>
                   <button
@@ -1080,7 +1074,7 @@ export default function PublicPages({
                           <text x="32" y="85" className="text-emerald-400 font-bold" fontSize="13">QRIS</text>
                         </svg>
                       </div>
-                      <p className="text-xs font-semibold text-slate-800">NEXUS Robotics & Coding</p>
+                      <p className="text-xs font-semibold text-slate-800">BOBOTIC Robotics & Coding</p>
                       <p className="text-[10px] text-slate-400">No Rekening Resmi: Mandiri 138-00-1122-4455</p>
                     </div>
 
@@ -1206,7 +1200,7 @@ export default function PublicPages({
             <h4 className="font-display font-bold text-sm">Masih Ada Pertanyaan Belum Terpecahkan?</h4>
             <p className="text-[11px] text-slate-400">Tim CS kami stand-by melayani kebutuhan belajar anak Anda 12 Jam non-stop.</p>
             <a
-              href="https://wa.me/6282212345678?text=Halo%2520CS%2520NEXUS%2520Robotics..."
+              href="https://wa.me/6282212345678?text=Halo%2520CS%2520BOBOTIC%2520Robotics..."
               className="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-xs transition-all shadow-md cursor-pointer inline-flex items-center space-x-1.5"
             >
               <MessageSquare className="h-4 w-4" />

@@ -238,7 +238,7 @@ export default function AdminPanel({
             ADMIN WORKSPACE
           </span>
           <h1 className="font-display font-bold text-2xl sm:text-3xl text-slate-900">
-            NEXUS Headquarters Control
+            BOBOTIC Headquarters Control
           </h1>
           <p className="text-xs text-slate-500">
             Panel manajemen terpusat untuk data siswa, berkas guru, dan pengaturan kurikulum interaktif.
@@ -364,10 +364,12 @@ export default function AdminPanel({
                     value={newStudent.city}
                     onChange={(e) => setNewStudent({ ...newStudent, city: e.target.value })}
                   >
-                    <option value="Surakarta">Surakarta</option>
-                    <option value="Sukoharjo">Sukoharjo</option>
+                    <option value="Surakarta">Kota Surakarta</option>
                     <option value="Boyolali">Boyolali</option>
+                    <option value="Sukoharjo">Sukoharjo</option>
                     <option value="Karanganyar">Karanganyar</option>
+                    <option value="Klaten">Klaten</option>
+                    <option value="Sragen">Sragen</option>
                   </select>
                 </div>
                 <div className="sm:col-span-2 space-y-1">
@@ -506,7 +508,7 @@ export default function AdminPanel({
                   <input
                     type="email"
                     required
-                    placeholder="cth: haya.fadhila@nexus.com"
+                    placeholder="cth: haya.fadhila@bobotic.com"
                     className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl"
                     value={newMentor.email}
                     onChange={(e) => setNewMentor({ ...newMentor, email: e.target.value })}
@@ -676,7 +678,7 @@ export default function AdminPanel({
             {/* List modules */}
             <div className="lg:col-span-5 space-y-3">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                DAFTAR SILABUS YANG TERSEDIA di NEXUS
+                DAFTAR SILABUS YANG TERSEDIA di BOBOTIC
               </span>
 
               {curriculum.map((m) => {

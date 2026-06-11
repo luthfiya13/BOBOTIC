@@ -101,7 +101,7 @@ export default function App() {
     setActiveRole(role);
     setLoggedUser(userObj);
     saveStateToLocal({ activeRole: role, loggedUser: userObj });
-    showNotification(`Selamat datang kembali, ${userObj.name || "di NEXUS"}!`, "success");
+    showNotification(`Selamat datang kembali, ${userObj.name || "di BOBOTIC"}!`, "success");
   };
 
   const handleLogout = () => {
@@ -109,7 +109,7 @@ export default function App() {
     setLoggedUser(null);
     setActiveView("home");
     saveStateToLocal({ activeRole: "public", loggedUser: null });
-    showNotification("Anda telah berhasil logout/keluar dari sistem NEXUS.", "info");
+    showNotification("Anda telah berhasil logout/keluar dari sistem BOBOTIC.", "info");
   };
 
   const handleQuickSwitch = (role: UserRole, userObj?: any) => {
@@ -133,7 +133,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-blue-500 selection:text-white" id="nexus-app-shell">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-blue-500 selection:text-white" id="bobotic-app-shell">
       
       {/* Centralised Akurasi Navbar */}
       <Navbar

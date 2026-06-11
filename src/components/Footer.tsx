@@ -12,7 +12,7 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800" id="nexus-footer">
+    <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800" id="bobotic-footer">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Logo & Bios */}
@@ -21,7 +21,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <div className="bg-blue-600 text-white p-2 rounded-xl flex items-center justify-center shadow-lg">
                 <Award className="h-6 w-6" />
               </div>
-              <span className="font-display font-bold text-2xl text-white tracking-tight">NEXUS</span>
+              <span className="font-display font-bold text-2xl text-white tracking-tight">BOBOTIC</span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
               Pionir mobile learning robotika dan coding di Solo Raya. Mentor bersertifikat datang langsung ke rumah Anda dengan membawa seluruh peralatan praktik lengkap.
@@ -66,7 +66,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <h3 className="font-display font-semibold text-lg text-white mb-4">Kontak Kami</h3>
             <div className="flex items-start space-x-2 text-sm text-slate-400">
               <Mail className="h-4 w-4 text-blue-500 mt-1 shrink-0" />
-              <span>info@nexusrobotics.id</span>
+              <span>info@bobotic.id</span>
             </div>
             <div className="flex items-start space-x-2 text-sm text-slate-400">
               <Phone className="h-4 w-4 text-blue-500 mt-1 shrink-0" />
@@ -97,7 +97,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         {/* Bottom copyright list */}
         <div className="mt-12 pt-8 border-t border-slate-800 text-center flex flex-col md:flex-row justify-between items-center text-xs text-slate-500" id="footer-bottom-claims">
-          <p>© 2026 NEXUS Robotics & Coding. All rights reserved.</p>
+          <p>© 2026 BOBOTIC Robotics & Coding. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="hover:text-amber-500 transition-colors">Kebijakan Privasi</a>
             <span>•</span>

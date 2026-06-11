@@ -41,7 +41,7 @@ export default function Navbar({
       const budi = {
         id: "s1",
         name: "Budi Santoso",
-        email: "budi@gmail.com",
+        email: "siswa",
         level: 1,
         address: "Jl. Slamet Riyadi No. 124, Solo"
       };
@@ -52,7 +52,7 @@ export default function Navbar({
       const haya = {
         id: "m1",
         name: "Haya Nur Fadhila",
-        email: "haya.fadhila@nexus.com",
+        email: "haya",
         major: "Pendidikan Guru Madrasah Ibtidaiyah",
         university: "UIN Raden Mas Said Surakarta"
       };
@@ -61,8 +61,8 @@ export default function Navbar({
     } else if (role === "admin") {
       const adminObj = {
         id: "admin1",
-        name: "Super Admin NEXUS",
-        email: "admin@nexus.com"
+        name: "Super Admin BOBOTIC",
+        email: "admin"
       };
       onQuickSwitch("admin", adminObj);
       onNavigate("admin-dashboard");
@@ -70,7 +70,7 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm" id="nexus-navbar">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm" id="bobotic-navbar">
       {/* Visual Demo Quick-Switcher Banner for Presentation Flow */}
       <div className="bg-slate-900 text-slate-300 px-4 py-1.5 text-xs font-mono flex flex-wrap justify-between items-center sm:px-6 gap-2 border-b border-slate-800">
         <div className="flex items-center space-x-2">
@@ -96,7 +96,7 @@ export default function Navbar({
                 : "bg-slate-800 text-slate-300 hover:bg-slate-700"
             }`}
           >
-            👦 Siswa: Budi
+            👦 Siswa: siswa
           </button>
           <button
             onClick={() => handleQuickRole("mentor")}
@@ -106,7 +106,7 @@ export default function Navbar({
                 : "bg-slate-800 text-slate-300 hover:bg-slate-700"
             }`}
           >
-            👩 Mentor: Haya (UIN)
+            👩 Mentor: haya
           </button>
           <button
             onClick={() => handleQuickRole("admin")}
@@ -116,7 +116,7 @@ export default function Navbar({
                 : "bg-slate-800 text-slate-300 hover:bg-slate-700"
             }`}
           >
-            ⚙️ Admin Panel
+            ⚙️ Admin: admin
           </button>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function Navbar({
               <Award className="h-6 w-6" />
             </div>
             <div>
-              <span className="font-display font-bold text-xl text-slate-900 tracking-tight block">NEXUS</span>
+              <span className="font-display font-bold text-xl text-slate-900 tracking-tight block">BOBOTIC</span>
               <span className="text-[10px] text-slate-400 font-mono tracking-wider block -mt-1 font-bold">ROBOTICS & CODING</span>
             </div>
           </div>
@@ -330,7 +330,7 @@ export default function Navbar({
                   </div>
                   <div className="text-left">
                     <p className="text-xs font-semibold text-slate-800 line-clamp-1 max-w-[120px]">
-                      {loggedUser?.name || "User Nexus"}
+                      {loggedUser?.name || "User BOBOTIC"}
                     </p>
                     <p className="text-[10px] text-slate-500 font-medium capitalize">
                       {activeRole} Logged
@@ -344,7 +344,7 @@ export default function Navbar({
                     <div className="px-4 py-2 border-b border-slate-50">
                       <p className="text-xs text-slate-400">Masuk sebagai</p>
                       <p className="font-semibold text-sm text-slate-800 line-clamp-1">
-                        {loggedUser?.name || "User Nexus"}
+                        {loggedUser?.name || "User BOBOTIC"}
                       </p>
                       <p className="text-xs font-mono text-slate-500 line-clamp-1">{loggedUser?.email}</p>
                     </div>
@@ -703,7 +703,7 @@ export default function Navbar({
 
       {/* Floating WhastApp Action Hook */}
       <a
-        href="https://wa.me/6282212345678?text=Halo%20NEXUS%20Robotics,%20saya%20ingin%20tanya%20mengenai%20paket%20kelas%20robotik"
+        href="https://wa.me/6282212345678?text=Halo%20BOBOTIC%20Robotics,%20saya%20ingin%20tanya%20mengenai%20paket%20kelas%20robotik"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl z-40 flex items-center justify-center transition-all hover:scale-110 active:scale-95 duration-200"

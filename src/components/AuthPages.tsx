@@ -67,12 +67,26 @@ export default function AuthPages({
       return;
     }
 
-    // Try finding admin login
+    // Try finding username-based demo logins first
     const emailLower = loginEmail.toLowerCase();
-    if (emailLower === "admin@bobotic.com" || emailLower === "admin@nexus.com" || emailLower === "admin") {
+    if (emailLower === "admin" || emailLower === "admin@bobotic.com") {
       onLoginSucceed("admin", { id: "admin", name: "Administrator BOBOTIC", email: "admin@bobotic.com" });
       onNavigate("admin-dashboard");
       onShowToast("Berhasil masuk sebagai Administrator BOBOTIC!", "success");
+      return;
+    }
+
+    if (emailLower === "siswa") {
+      const defaultBudi = students[0];
+      onLoginSucceed("siswa", defaultBudi);
+      onNavigate("siswa-dashboard");
+      return;
+    }
+
+    if (emailLower === "haya") {
+      const defaultHaya = mentors.find(m => m.id === "m1") || mentors[0];
+      onLoginSucceed("mentor", defaultHaya);
+      onNavigate("mentor-dashboard");
       return;
     }
 
@@ -93,9 +107,9 @@ export default function AuthPages({
     }
 
     // Default simulation fallback
-    if (emailLower.includes("mentor") || emailLower === "aris" || emailLower === "aris.setiawan@nexus.com") {
-      const defaultAris = mentors.find(m => m.id === "m1") || mentors[0];
-      onLoginSucceed("mentor", defaultAris);
+    if (emailLower.includes("mentor") || emailLower === "haya" || emailLower === "haya.nur@bobotic.com") {
+      const defaultHaya = mentors.find(m => m.id === "m1") || mentors[0];
+      onLoginSucceed("mentor", defaultHaya);
       onNavigate("mentor-dashboard");
     } else {
       // Login Budi as default student
@@ -202,7 +216,7 @@ export default function AuthPages({
                   type="text"
                   required
                   className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none"
-                  placeholder="budi@gmail.com atau aris.setiawan@nexus.com"
+                  placeholder="siswa / haya / admin"
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
                 />
@@ -245,9 +259,9 @@ export default function AuthPages({
           {/* Quick login helper panel inside Auth form for frictionless demos */}
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-[10px] text-slate-500 space-y-1">
             <p className="font-semibold text-slate-700">💡 Demo Quick-Tips BOBOTIC:</p>
-            <p>• 👦 Siswa: <strong className="text-blue-600">budi@gmail.com</strong></p>
-            <p>• 👩 Mentor: <strong className="text-purple-600">aris.setiawan@nexus.com</strong></p>
-            <p>• ⚙️ Admin: <strong className="text-rose-600">admin@bobotic.com</strong> (Sandi: bebas)</p>
+            <p>• 👦 Siswa: <strong className="text-blue-600">siswa</strong></p>
+            <p>• 👩 Mentor: <strong className="text-purple-600">haya</strong></p>
+            <p>• ⚙️ Admin: <strong className="text-rose-600">admin</strong> (Sandi: bebas)</p>
           </div>
 
           <div className="text-center text-xs text-slate-500 border-t border-slate-50 pt-4">
@@ -343,17 +357,19 @@ export default function AuthPages({
                 value={stuForm.city}
                 onChange={(e) => setStuForm({ ...stuForm, city: e.target.value })}
               >
-                <option value="Surakarta">Kota Surakarta (Solo Tengah)</option>
-                <option value="Sukoharjo">Sukoharjo (Solo Baru Sektor)</option>
-                <option value="Karanganyar">Karanganyar (Bukit Barat)</option>
-                <option value="Boyolali">Boyolali Distrik</option>
+                <option value="Surakarta">Kota Surakarta</option>
+                <option value="Boyolali">Boyolali</option>
+                <option value="Sukoharjo">Sukoharjo</option>
+                <option value="Karanganyar">Karanganyar</option>
+                <option value="Klaten">Klaten</option>
+                <option value="Sragen">Sragen</option>
               </select>
             </div>
 
             <label className="flex items-start space-x-2 p-1 cursor-pointer">
               <input type="checkbox" required className="mt-0.5" defaultChecked />
               <span className="text-[10px] text-slate-500 font-medium leading-tight">
-                Saya menyetujui seluruh Syarat, Ketentuan, Rencana Operasi, serta Kebijakan Privasi NEXUS Solo Raya.
+                Saya menyetujui seluruh Syarat, Ketentuan, Rencana Operasi, serta Kebijakan Privasi BOBOTIC Solo Raya.
               </span>
             </label>
 
@@ -408,7 +424,7 @@ export default function AuthPages({
                   type="email"
                   required
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-purple-500 focus:outline-none"
-                  placeholder="cth: aris@nexus.com"
+                  placeholder="cth: haya@bobotic.com"
                   value={menForm.email}
                   onChange={(e) => setMenForm({ ...menForm, email: e.target.value })}
                 />

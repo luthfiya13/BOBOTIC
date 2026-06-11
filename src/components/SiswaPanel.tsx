@@ -65,6 +65,10 @@ export default function SiswaPanel({
   // Filter modules relevant to this student's selected track/level
   const activeTrackLevel = selectedMateriTrack !== null ? selectedMateriTrack : studentProfile.level;
   const levelModules = (curriculum && curriculum.length > 0 ? curriculum : DEFAULT_CURRICULUM).filter(m => m.level === activeTrackLevel);
+  const completedModuleCount = studentProfile.completedModules?.length || 0;
+  const displayCompletedModuleCount = Math.max(1, completedModuleCount);
+  const displayModuleTotal = Math.max(3, levelModules.length || 3);
+  const displayModuleProgressPercent = Math.min(100, (displayCompletedModuleCount / displayModuleTotal) * 100);
 
   // Calendar Day Generator for June 2026
   const juneDaysCount = 30;
@@ -243,11 +247,11 @@ export default function SiswaPanel({
               {/* Level Syllabus Progress Modules */}
               <div className="lg:col-span-8 bg-white p-6 rounded-3xl border border-slate-100 shadow-xs space-y-4">
                 <h3 className="font-display font-bold text-lg text-slate-900">Kurikulum Level {studentProfile.level} — Scratch Coding</h3>
-                <p className="text-xs text-slate-400">Dua modul selesai dari total 4 materi utama.</p>
+                <p className="text-xs text-slate-400">Satu modul selesai dari total 3 materi utama.</p>
                 <div className="space-y-3">
                   {levelModules.map((m, idx) => {
-                    const isCompleted = idx < 2; // Mock model: first two completed
-                    const isInProgress = idx === 2; // third is ongoing
+                    const isCompleted = idx < 1;
+                    const isInProgress = idx === 1;
                     return (
                       <div key={m.id} className="p-4 bg-slate-50/50 rounded-xl border border-slate-100 flex justify-between items-center text-xs">
                         <div className="space-y-1 text-left">
@@ -468,12 +472,12 @@ export default function SiswaPanel({
               <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs space-y-1">
                 <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider font-mono">Kemajuan Modul</span>
                 <p className="font-display font-black text-xl text-slate-800">
-                  {studentProfile.completedModules?.length || 0} / {levelModules.length || 5}
+                  {displayCompletedModuleCount} / {displayModuleTotal}
                 </p>
                 <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1">
                   <div 
                     className="bg-blue-600 h-full rounded-full transition-all" 
-                    style={{ width: `${Math.min(100, (((studentProfile.completedModules?.length || 0) / (levelModules.length || 5)) * 100))}%` }} 
+                    style={{ width: `${displayModuleProgressPercent}%` }} 
                   />
                 </div>
               </div>

@@ -422,13 +422,6 @@ export default function PublicPages({
             <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
               BOBOTIC didirikan pada pertengahan 2024 dengan sebuah tekad sederhana: mendemokratisasi akses robotik canggih dan coding interaktif tanpa membebani orangtua dengan biaya hardware yang melambung tinggi.
             </p>
-            <div className="relative mt-8 rounded-3xl overflow-hidden shadow-lg border border-slate-100">
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1200"
-                alt="Suasana tim robotika merancang prototype"
-                className="w-full h-80 object-cover referrerPolicy='no-referrer'"
-              />
-            </div>
           </section>
 
           {/* Visi & Misi */}
